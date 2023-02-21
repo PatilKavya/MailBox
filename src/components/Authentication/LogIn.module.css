@@ -1,8 +1,7 @@
 .section{
-   
-    margin: 6rem;
+    height: fit-content;
+    width:fit-content;
     text-align : center;
-    align-items: center;
 }
 
 .label{
@@ -20,12 +19,20 @@
     font-size: larger;
 }
 
+.box{
+    color:white;
+    background: rgb(73, 62, 62);
+    border-radius: 2rem;
+    height: 3rem;
+}
+
 .button{
     margin : 2rem;
     text-align : center; 
     width: 20rem;
     font-weight: 500;
     font-size: larger;
+    border-radius: 1rem;
 }
 .button1{
     margin : 2rem;
@@ -36,7 +43,8 @@
 }
 
 .container{
-    align-items: center;
-    margin-top: 6rem;
-    text-align: center;
+    background-color: rgb(103, 103, 241);
+ width: 100rem;
+ height: 50rem;
+ text-align: center;
 }

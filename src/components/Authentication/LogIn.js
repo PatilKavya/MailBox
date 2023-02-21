@@ -1,9 +1,9 @@
 import React, {  useEffect, useRef } from 'react'
 import { Button, Card, Container, Form, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
-import styles from './Login.module.css'
+import styles from './LogIn.module.css'
 import { useDispatch } from 'react-redux';
-import { tokenAction } from '../../store/login';
+import { tokenAction } from '../../store/logIn';
 
 const LogIn=()=>{
    const dispatch= useDispatch()
@@ -28,13 +28,10 @@ const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signIn
  
     if(res.ok){
       const data= await res.json();
-    //   console.log(data.email);
-    //   console.log(data.idToken)
-    //    context.addToken(data.idToken)
     localStorage.setItem('token',data.idToken) 
     dispatch(tokenAction.logIn(localStorage.getItem('token'))) 
     
-      history.replace('/expense')
+    //   history.replace('/expense')
     }
     else{
         const data=await res.json();
@@ -48,20 +45,20 @@ const res=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signIn
 
 return (
     <>
-    <Container>
+    <Container >
         <Card className={styles.section}>
             <h2>LogIn</h2>
             <Form onSubmit={submitHandler}>
                 <FormGroup className={styles.input}>
                     <FormLabel htmlFor='mail'>Email</FormLabel>
-                    <FormControl type='mail' id='mail' ref={mailRef} required/>
+                    <FormControl type='mail' id='mail' ref={mailRef} className={styles.box}  required/>
                 </FormGroup>
                 <FormGroup className={styles.input}>
                     <FormLabel htmlFor='password'>Password</FormLabel>
-                    <FormControl type='password' id='password' ref={passwordRef} required/>
+                    <FormControl type='password' id='password' ref={passwordRef} className={styles.box} required/>
                 </FormGroup>
                   <Link to='/password' style={{textDecoration:'none'}}>Forgot Password?</Link><br/>
-                <Button type='submit'  className={styles.button} variant='secondary'>LogIn</Button><br/>
+                <Button type='submit'  className={styles.button} variant='secondary'  >LogIn</Button><br/>
                 <Link to='/signUp'><Button className={styles.button1} variant='info'>Create Account</Button></Link>
             </Form>
         </Card>
